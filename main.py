@@ -92,21 +92,13 @@ def handle_message(event):
     if event.message.text == "しりとりしよ":
         gameflg = true;
         used = defaultdict(int)
-        
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="なんか言葉入れてみて")
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="なんか言葉入れてみて")
     elif event.message.text == "しりとりおわり":
         gameflg = false;
-        used = defaultdict(int)
-            
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="おつかれさま")
+        used = defaultdict(int)   
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="おつかれさま")
     else:    
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=GetRes(event.message.text,gameflg)))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetRes(event.message.text,gameflg)))
 
 
 if __name__ == "__main__":
