@@ -8,7 +8,7 @@ import jaconv
 
 class Response:
 
-    def getRes(self,text):
+    def getRes(text):
 
         return str("答えを返す")
         try:
