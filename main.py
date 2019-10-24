@@ -26,7 +26,7 @@ YOUR_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-def getRes(self,text):
+def getRes():
 
     return str("答えを返す")
     try:
@@ -119,9 +119,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
+    # event.message.text # 送られてきたメッセージ
+    
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=GetRes()))
 
 
 if __name__ == "__main__":
