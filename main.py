@@ -96,7 +96,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="なんか言葉入れてみて")
-    if event.message.text == "しりとりおわり":
+    elif event.message.text == "しりとりおわり":
         gameflg = false;
         used = defaultdict(int)
             
