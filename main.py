@@ -37,7 +37,7 @@ def GetRes(Msg,flg):
     with(open(ansfilename, 'r', encoding = "shift_jis")) as F:
         dic = list(set(F.read().strip().split('\n')))
     first_words = [ e[0] for e in dic ]
-    #used = defaultdict(int)
+    used = defaultdict(int)
     
     word = jaconv.kata2hira(Msg)
     
