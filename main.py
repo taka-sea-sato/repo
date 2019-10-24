@@ -26,13 +26,7 @@ YOUR_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-def GetRes():
-
-    return str("答えを返す")
-    try:
-        input = raw_input
-    except NameError:
-        pass
+def GetRes(Msg):
 
     ansfilename = r"ans.txt"
 
@@ -50,9 +44,9 @@ def GetRes():
             if startswith == None:
                 startswith = choice(first_words)
                 startswith = jaconv.kata2hira(startswith)
-            sys.stdout.write('{0:3}: あなたの番です。 "{1}": '.format(i, startswith))
-            s = input()
-            s = jaconv.kata2hira(s)
+            return '{0:3}: あなたの番です。 "{1}": '.format(i, startswith)
+        
+            s = jaconv.kata2hira(Msg)
             # 一文字目の確認
             while(not s.startswith(startswith)):
                 print('"{0}"で始まっていません。 '.format(startswith))
