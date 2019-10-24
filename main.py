@@ -11,6 +11,8 @@ from linebot.models import (
 )
 import os
 
+import shiritori_response as res
+
 app = Flask(__name__)
 
 #環境変数取得
@@ -40,9 +42,12 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    
+    message = res.GetRes("a")
+    
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=message))
 
 
 if __name__ == "__main__":
