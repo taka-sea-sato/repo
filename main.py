@@ -11,11 +11,7 @@ from linebot.models import (
 )
 import os
 
-#from siritori_Response import Response
-
 app = Flask(__name__)
-
-# res = Response()
 
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
@@ -49,7 +45,6 @@ def handle_message(event):
     if event.message.text == "い":
         rep = "インキンマン"
         
-    #rep = res.getResponse(event.message.text)
     rep = "テスト"
     line_bot_api.reply_message(
         event.reply_token,
