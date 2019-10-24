@@ -48,9 +48,11 @@ def handle_message(event):
         rep = "アンパンマン"
     if event.message.text == "い":
         rep = "インキンマン"
+        
+    rep = res.getResponse(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text= res.getResponse(event.message.text))
+        TextSendMessage(text = rep)
 
 
 if __name__ == "__main__":
