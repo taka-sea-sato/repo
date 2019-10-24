@@ -44,15 +44,13 @@ def GetRes(Msg):
             if startswith == None:
                 startswith = choice(first_words)
                 startswith = jaconv.kata2hira(startswith)
-            return '{0:3}: あなたの番です。 "{1}": '.format(i, startswith)
-        
+                
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='{0:3}: あなたの番です。 "{1}": '.format(i, startswith)))
             s = jaconv.kata2hira(Msg)
             # 一文字目の確認
             while(not s.startswith(startswith)):
                 print('"{0}"で始まっていません。 '.format(startswith))
                 sys.stdout.write('{0:3}: あなたの番です。 "{1}": '.format(i, startswith))
-                s = input()
-                s = jaconv.kata2hira(s)
             # 既出単語かどうかの確認
             if s in used:
                 print('"{0}"は{1}回目に{2}が使用しています。わたしの勝ちです。'.format(s, used[s], players[used[s]%len(players)]))
