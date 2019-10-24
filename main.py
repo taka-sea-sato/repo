@@ -56,8 +56,7 @@ def GetRes(Msg):
         convword = jaconv.kata2hira(word)
         startswith = convword[-1]
         used[word] = len(used)
-        print(msg + '{0}'.format(word))
-    print('今回のしりとりでは{0}個の単語を使用しました。'.format(len(used)))
+        return msg + '{0}'.format(word)
 
 
 @app.route("/callback", methods=['POST'])
