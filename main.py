@@ -26,9 +26,12 @@ YOUR_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-used = defaultdict(int)
+gameflg = false;
 
-def GetRes(Msg):
+def GetRes(Msg,flg):
+    
+    if flg == true:
+        return "しりとりしよ　って言ってみて"
 
     ansfilename = r"ans.txt"
 
@@ -86,11 +89,24 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
-    # event.message.text # 送られてきたメッセージ
-    
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=GetRes(event.message.text)))
+    if event.message.text == "しりとりしよ":
+        gameflg = true;
+        used = defaultdict(int)
+        
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="なんか言葉入れてみて")
+    if event.message.text == "しりとりおわり":
+        gameflg = false;
+        used = defaultdict(int)
+            
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="おつかれさま")
+    else:    
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=GetRes(event.message.text,gameflg)))
 
 
 if __name__ == "__main__":
