@@ -36,9 +36,10 @@ def GetRes(Msg):
     first_words = [ e[0] for e in dic ]
     used = defaultdict(int)
     
-    startswith = Msg.startswith
+    startswith = choice(first_words)
+    startswith = jaconv.kata2hira(startswith)
     
-    msg = '{0:3}: わたしの番です。      '.format(i)
+    msg = '{0:3}: わたしの番です。'.format(i)
 
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
