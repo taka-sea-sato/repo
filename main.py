@@ -26,8 +26,6 @@ YOUR_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-i = 1
-
 def GetRes(Msg):
 
     ansfilename = r"ans.txt"
@@ -57,8 +55,7 @@ def GetRes(Msg):
         word = choice(words)
         convword = jaconv.kata2hira(word)
         startswith = convword[-1]
-        used[word] = i
-        i+=1
+        used[word] = len(used)
         print(msg + '{0}'.format(word))
     print('今回のしりとりでは{0}個の単語を使用しました。'.format(len(used)))
 
