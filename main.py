@@ -44,7 +44,7 @@ def GetRes(Msg):
 
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
-        print('もう思いつきません! あなたの勝ちです。')
+        return 'もう思いつきません! あなたの勝ちです。'
         print('{0} から始まる言葉を教えてください！'.format(startswith))
         # 回答リストに書き込む処理
         with(open(ansfilename, 'a')) as F:
