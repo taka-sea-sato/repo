@@ -11,7 +11,7 @@ from linebot.models import (
 )
 import os
 
-from shiritori_Response import Response
+from siritori_Response import Response
 
 app = Flask(__name__)
 
