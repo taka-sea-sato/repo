@@ -11,6 +11,12 @@ from linebot.models import (
 )
 import os
 
+import sys
+from random import shuffle, choice
+from itertools import count
+from collections import defaultdict
+import jaconv
+
 app = Flask(__name__)
 
 #環境変数取得
