@@ -71,9 +71,7 @@ def GetRes(Msg):
                 startswith = convword[-1]
                 used[convword] = i
                 
-                line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=msg + '{0}'.format(word))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg + '{0}'.format(word))
             else:
                 words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
                 if len(words) == 0:
