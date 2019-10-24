@@ -26,6 +26,8 @@ YOUR_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
+used = defaultdict(int)
+
 def GetRes(Msg):
 
     ansfilename = r"ans.txt"
@@ -34,11 +36,15 @@ def GetRes(Msg):
     with(open(ansfilename, 'r', encoding = "shift_jis")) as F:
         dic = list(set(F.read().strip().split('\n')))
     first_words = [ e[0] for e in dic ]
-    used = defaultdict(int)
+    #used = defaultdict(int)
+    
+    word = jaconv.kata2hira(Msg)
     
     if len(used) == 0:
         startswith = Msg[-1]
         startswith = jaconv.kata2hira(startswith)
+    
+    used[word] = len(used)
     
     msg = 'わたしの番です。'
 
