@@ -50,7 +50,7 @@ def handle_message(event):
         rep = "インキンマン"
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=os.environ[res.getResponse(event.message.text)]))
+        TextSendMessage(text= res.getResponse(event.message.text))
 
 
 if __name__ == "__main__":
