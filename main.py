@@ -57,7 +57,6 @@ def GetRes(Msg):
         word = choice(words)
         convword = jaconv.kata2hira(word)
         startswith = convword[-1]
-        used[word] = len(used)
         with(open(usefilename, 'a')) as UA:
             UA.write(word)
             UA.write('\n')
