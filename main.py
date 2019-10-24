@@ -11,11 +11,11 @@ from linebot.models import (
 )
 import os
 
-from siritori_Response import Response
+#from siritori_Response import Response
 
 app = Flask(__name__)
 
-res = Response()
+# res = Response()
 
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
