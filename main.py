@@ -32,12 +32,15 @@ def GetRes(Msg,flg):
         return "しりとりしよ　って言ってみて"
 
     ansfilename = r"ans.txt"
+    usefilename = r"used.txt"
 
     # 答えを辞書にセットする
     with(open(ansfilename, 'r', encoding = "shift_jis")) as F:
         dic = list(set(F.read().strip().split('\n')))
     first_words = [ e[0] for e in dic ]
-    used = defaultdict(int)
+    
+    with(open(ansfilename, 'r', encoding = "shift_jis")) as U:
+        used = list(set(F.read().strip().split('\n'))
     
     word = jaconv.kata2hira(Msg)
     
@@ -54,15 +57,18 @@ def GetRes(Msg,flg):
         return 'もう思いつきません! あなたの勝ちです。'
         print('{0} から始まる言葉を教えてください！'.format(startswith))
         # 回答リストに書き込む処理
-        with(open(ansfilename, 'a')) as F:
-            F.write(s)
-            F.write('\n')
+        with(open(ansfilename, 'a', encoding = "shift_jis")) as U:
+            U.write(word)
+            U.write('\n')
         print('ありがとうございます！これでまた賢くなりました！')
     else:
         word = choice(words)
         convword = jaconv.kata2hira(word)
         startswith = convword[-1]
         used[word] = len(used)
+        with(open(usefilename, 'a')) as UA:
+            UA.write(word)
+            UA.write('\n')
         return msg + '{0}'.format(word)
 
 
