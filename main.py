@@ -37,7 +37,7 @@ def GetRes(Msg):
     used = defaultdict(int)
     
     if len(used) == 0:
-        startswith = Msg[0]
+        startswith = Msg[-1]
         startswith = jaconv.kata2hira(startswith)
     
     msg = 'わたしの番です。'
@@ -46,7 +46,6 @@ def GetRes(Msg):
     if len(words) == 0:
         print('もう思いつきません! あなたの勝ちです。')
         print('{0} から始まる言葉を教えてください！'.format(startswith))
-        s = input()
         # 回答リストに書き込む処理
         with(open(ansfilename, 'a')) as F:
             F.write(s)
