@@ -51,7 +51,6 @@ def GetRes(Msg):
             F.write(s)
             F.write('\n')
         print('ありがとうございます！これでまた賢くなりました！')
-        break
     else:
         word = choice(words)
         convword = jaconv.kata2hira(word)
