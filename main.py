@@ -90,7 +90,7 @@ def callback():
 def handle_message(event):
     
     if event.message.text == "しりとりしよ":
-        gameflg = true;
+        gameflg = true
         used = defaultdict(int)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="なんか言葉入れてみて")
     elif event.message.text == "しりとりおわり":
