@@ -84,11 +84,13 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
-        if event.message.text == "リセット":
+        if event.message.text == "しりとりおわり":
             usedname = r"used.txt"
-            with(open(usedname, 'a')) as UA:
+            with(open(usedname, 'w')) as UA:
                 UA.write("1")
                 UA.write('\n')
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お疲れさまでした"))
+            return
     
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetRes(event.message.text)))
 
