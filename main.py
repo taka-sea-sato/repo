@@ -32,7 +32,7 @@ def GetRes(Msg):
     usefilename = r"used.txt"
 
     # 答えを辞書にセットする
-    with(open(ansfilename, 'r', encoding = "shift_jis")) as F:
+    with(open(ansfilename, 'r')) as F:
         dic = list(set(F.read().strip().split('\n')))
     first_words = [ e[0] for e in dic ]
     
