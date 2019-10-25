@@ -47,12 +47,6 @@ def GetRes(Msg):
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
         return 'もう思いつきません! あなたの勝ちです。'
-        print('{0} から始まる言葉を教えてください！'.format(startswith))
-        # 回答リストに書き込む処理
-        with(open(ansfilename, 'a', encoding = "shift_jis")) as U:
-            U.write(word)
-            U.write('\n')
-        print('ありがとうございます！これでまた賢くなりました！')
     else:
         word = choice(words)
         convword = jaconv.kata2hira(word)
