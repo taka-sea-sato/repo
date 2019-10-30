@@ -85,7 +85,7 @@ def GetTes(Msg):
     with(open(lastfilename, 'r')) as L:
         Lastword = list(set(L.read().strip().split('\n')))
            
-    return len(Lastword)
+    return Lastword
 
 
 @app.route("/callback", methods=['POST'])
@@ -114,6 +114,11 @@ def handle_message(event):
             with(open(usedname, 'w')) as UA:
                 UA.write("1")
                 UA.write('\n')
+            
+            usedname = r"lastans.txt"
+            with(open(usedname, 'w')) as LA:
+                LA.write("1")
+                LA.write('\n')
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お疲れさまでした"))
             return
         
