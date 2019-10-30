@@ -87,7 +87,7 @@ def GetTes(Msg):
         
     for last in Lastword:
            
-        return last[-1]
+        return last[-2]
 
 
 @app.route("/callback", methods=['POST'])
