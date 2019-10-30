@@ -86,7 +86,7 @@ def GetTes(Msg):
         Lastword = list(set(L.read().strip().split('\n')))
         
     for last in Lastword:
-           
+        print(last)
     return last[0]
 
 
