@@ -30,7 +30,7 @@ def GetRes(Msg):
 
     ansfilename = r"ans.txt"
     usefilename = r"used.txt"
-    lastfilename = r"used.txt"
+    lastfilename = r"lastans.txt"
 
     # 答えを辞書にセットする
     with(open(ansfilename, 'r')) as F:
@@ -46,7 +46,7 @@ def GetRes(Msg):
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
     
-    if(len(Lastword) != 1):
+    if(Lastword[0] != "1"):
         if(not word.startswith(Lastword[-1])):
             return '"{0}"で始まっていません。 '.format(Lastword[-1])
     
