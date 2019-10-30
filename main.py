@@ -46,7 +46,7 @@ def GetRes(Msg):
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
     
-    if(len(Lastword) != 0):
+    if(len(Lastword) != 1):
         if(not word.startswith(Lastword[-1])):
             return '"{0}"で始まっていません。 '.format(Lastword[-1])
     
