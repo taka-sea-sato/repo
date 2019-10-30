@@ -48,6 +48,7 @@ def GetRes(Msg):
     
     for last in Lastword:
         print(last)
+        last = jaconv.kata2hira(last)
     
     if(last[0] != "1"):
         if(not word.startswith(last[-1])):
