@@ -30,6 +30,7 @@ def GetRes(Msg):
 
     ansfilename = r"ans.txt"
     usefilename = r"used.txt"
+    lastfilename = r"used.txt"
 
     # 答えを辞書にセットする
     with(open(ansfilename, 'r')) as F:
@@ -38,14 +39,16 @@ def GetRes(Msg):
     
     with(open(usefilename, 'r')) as U:
         used = list(set(U.read().strip().split('\n')))
+        
+    with(open(lastfilename, 'r')) as L:
+        Lastword = list(set(L.read().strip().split('\n')))
            
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
     
-    if(len(used) != 1):
-        if(not word.startswith(word[-1])):
-            return lastword
-            return '"{0}"で始まっていません。 '.format(startswith)
+    if(len(Lastword) != 0):
+        if(not word.startswith(Lastword[-1])):
+            return '"{0}"で始まっていません。 '.format(Lastword[-1])
     
     msg = 'わたしの番です。'
 
@@ -59,6 +62,10 @@ def GetRes(Msg):
         with(open(usefilename, 'a')) as UA:
             UA.write(word)
             UA.write('\n')
+            
+        with(open(lastfilename, 'w')) as L:
+            L.write(word)
+            L.write('\n')
         return msg + '{0}'.format(word)
 
 
