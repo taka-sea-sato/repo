@@ -43,7 +43,7 @@ def GetRes(Msg):
     startswith = word[-1]
     
     if(len(used) != 1):
-        if(not used[-1].endswith(word[0])):
+        if(not word.startswith(used[-1][-1])):
             return '"{0}"で始まっていません。 '.format(startswith)
     
     msg = 'わたしの番です。'
