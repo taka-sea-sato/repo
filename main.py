@@ -59,9 +59,6 @@ def GetRes(Msg):
         with(open(usefilename, 'a')) as UA:
             UA.write(word)
             UA.write('\n')
-        with(open(lastansfilename, 'a')) as UA:
-            UA.write(word)
-            UA.write('\n')
         return msg + '{0}'.format(word)
 
 
