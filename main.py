@@ -85,7 +85,7 @@ def GetTes(Msg):
     with(open(lastfilename, 'r')) as L:
         Lastword = list(set(L.read().strip().split('\n')))
            
-    return Lastword[0]
+    return Lastword[0][-1]
 
 
 @app.route("/callback", methods=['POST'])
