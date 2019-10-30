@@ -51,7 +51,7 @@ def GetRes(Msg):
     
     if(last[0] != "1"):
         if(not word.startswith(last[-1])):
-            return '"{0}"で始まっていません。 '.format(Lastword[-1])
+            return '"{0}"で始まっていません。 '.format(last[-1])
     
     msg = 'わたしの番です。'
 
