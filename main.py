@@ -68,6 +68,25 @@ def GetRes(Msg):
             L.write('\n')
         return msg + '{0}'.format(word)
 
+def GetTes(Msg):
+
+    ansfilename = r"ans.txt"
+    usefilename = r"used.txt"
+    lastfilename = r"used.txt"
+
+    # 答えを辞書にセットする
+    with(open(ansfilename, 'r')) as F:
+        dic = list(set(F.read().strip().split('\n')))
+    first_words = [ e[0] for e in dic ]
+    
+    with(open(usefilename, 'r')) as U:
+        used = list(set(U.read().strip().split('\n')))
+        
+    with(open(lastfilename, 'r')) as L:
+        Lastword = list(set(L.read().strip().split('\n')))
+           
+    return len(Lastword)
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -96,6 +115,10 @@ def handle_message(event):
                 UA.write("1")
                 UA.write('\n')
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お疲れさまでした"))
+            return
+        
+        if event.message.text == "てすと":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetTes(event.message.text)))
             return
     
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetRes(event.message.text)))
