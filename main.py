@@ -46,8 +46,11 @@ def GetRes(Msg):
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
     
-    if(Lastword[0] != "1"):
-        if(not word.startswith(Lastword[-1])):
+    for last in Lastword:
+        print(last)
+    
+    if(last[0] != "1"):
+        if(not word.startswith(last[-1])):
             return '"{0}"で始まっていません。 '.format(Lastword[-1])
     
     msg = 'わたしの番です。'
