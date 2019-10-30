@@ -85,7 +85,7 @@ def GetTes(Msg):
     with(open(lastfilename, 'r')) as L:
         Lastword = list(set(L.read().strip().split('\n')))
         
-    for last in Lastword.values():
+    for last in Lastword:
            
         return last[-1]
 
