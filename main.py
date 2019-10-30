@@ -42,6 +42,7 @@ def GetRes(Msg):
         
     with(open(lastansfilename, 'r')) as L:
         lastword = L.read().strip().split('\n')
+    return lastword
     
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
