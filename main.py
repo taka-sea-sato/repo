@@ -44,7 +44,7 @@ def GetRes(Msg):
     with(open(lastfilename, 'r')) as L:
         Lastword = list(set(L.read().strip().split('\n')))
         
-    with(open(playtxt, 'a')) as P:
+    with(open(playtxt, 'r')) as P:
         play = list(set(P.read().strip().split('\n')))
            
     word = jaconv.kata2hira(Msg)
@@ -53,10 +53,6 @@ def GetRes(Msg):
     for last in Lastword:
         print(last)
         last = jaconv.kata2hira(last)
-        
-    with(open(playtxt, 'a')) as P:
-        play = list(set(P.read().strip().split('\n')))
-        P.write(Msg)
     
     if(last[0] != "1"):
         if(not word.startswith(last[-1])):
@@ -66,7 +62,7 @@ def GetRes(Msg):
 
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
-        with(open(ansfilename, 'a')) as F:
+        with(open(play, 'a')) as F:
             for e in play:
                 F.write(e)
                 F.write('\n')
@@ -78,6 +74,9 @@ def GetRes(Msg):
         with(open(usefilename, 'a')) as UA:
             UA.write(word)
             UA.write('\n')
+           
+        with(open(playtxt, 'a')) as P:
+            P.write(Msg)
             
         with(open(lastfilename, 'w')) as L:
             L.write(word)
