@@ -58,7 +58,11 @@ def GetRes(Msg):
 
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
-        return 'もう思いつきません! あなたの勝ちです。'
+        with(open(ansfilename, 'a')) as F:
+        for e in used:
+            F.write(word)
+            F.write('\n')
+        return 'もう思いつきません! あなたの勝ちです。\n今回使った言葉を覚えました。'
     else:
         word = choice(words)
         convword = jaconv.kata2hira(word)
