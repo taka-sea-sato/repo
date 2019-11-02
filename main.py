@@ -150,7 +150,7 @@ def handle_message(event):
         if event.message.text == "いくつおぼえた？":
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetWord()))
     
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetRes(event.message.text)))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetWord(text=GetRes(event.message.text)))
 
 
 if __name__ == "__main__":
