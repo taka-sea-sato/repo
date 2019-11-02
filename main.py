@@ -31,6 +31,7 @@ def GetRes(Msg):
     ansfilename = r"ans.txt"
     usefilename = r"used.txt"
     lastfilename = r"lastans.txt"
+    playtxt = r"play.txt"
 
     # 答えを辞書にセットする
     with(open(ansfilename, 'r')) as F:
@@ -42,6 +43,9 @@ def GetRes(Msg):
         
     with(open(lastfilename, 'r')) as L:
         Lastword = list(set(L.read().strip().split('\n')))
+        
+    with(open(playtxt, 'a')) as P:
+        play = list(set(P.read().strip().split('\n')))
            
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
@@ -49,6 +53,10 @@ def GetRes(Msg):
     for last in Lastword:
         print(last)
         last = jaconv.kata2hira(last)
+        
+    with(open(playtxt, 'a')) as P:
+        play = list(set(P.read().strip().split('\n')))
+        P.write(Msg)
     
     if(last[0] != "1"):
         if(not word.startswith(last[-1])):
@@ -59,8 +67,8 @@ def GetRes(Msg):
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
         with(open(ansfilename, 'a')) as F:
-            for e in used:
-                F.write(word)
+            for e in play:
+                F.write(e)
                 F.write('\n')
         return 'もう思いつきません! あなたの勝ちです。\n今回使った言葉を覚えました。'
     else:
@@ -137,9 +145,12 @@ def handle_message(event):
                 UA.write('\n')
             
             usedname = r"lastans.txt"
+            play = r"play.txt"
             with(open(usedname, 'w')) as LA:
                 LA.write("1")
                 LA.write('\n')
+            with(open(play, 'w')) as P:
+                P.write('\n')
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お疲れさまでした"))
             return
         
