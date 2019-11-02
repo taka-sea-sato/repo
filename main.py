@@ -64,6 +64,7 @@ def GetRes(Msg):
     if len(words) == 0:
         with(open(ansfilename, 'a')) as F:
             for e in play:
+                print(e)
                 F.write(e)
                 F.write('\n')
         return 'もう思いつきません! あなたの勝ちです。\n今回使った言葉を覚えました。'
