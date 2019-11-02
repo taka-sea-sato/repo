@@ -78,6 +78,7 @@ def GetRes(Msg):
            
         with(open(playtxt, 'a')) as P:
             P.write(Msg)
+            P.write('\n')
             
         with(open(lastfilename, 'w')) as L:
             L.write(word)
