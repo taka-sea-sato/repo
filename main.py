@@ -97,6 +97,17 @@ def GetTes(Msg):
         print(last)
     return last[-1]
 
+def GetWord():
+
+    ansfilename = r"ans.txt"
+
+    # 答えを辞書にセットする
+    with(open(ansfilename, 'r')) as F:
+        dic = list(set(F.read().strip().split('\n')))
+
+    return "今" + len(dic) + "個の言葉を覚えてます"
+
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -135,6 +146,9 @@ def handle_message(event):
         if event.message.text == "てすと":
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetTes(event.message.text)))
             return
+        
+        if event.message.text == "いくつおぼえた？":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetWord()))
     
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=GetRes(event.message.text)))
 
