@@ -57,6 +57,10 @@ def GetRes(Msg):
     if(last[0] != "1"):
         if(not word.startswith(last[-1])):
             return '"{0}"で始まっていません。 '.format(last[-1])
+        
+    with(open(playtxt, 'a')) as P:
+        P.write(Msg)
+        P.write('\n')
     
     msg = 'わたしの番です。'
 
@@ -75,10 +79,6 @@ def GetRes(Msg):
         with(open(usefilename, 'a')) as UA:
             UA.write(word)
             UA.write('\n')
-           
-        with(open(playtxt, 'a')) as P:
-            P.write(Msg)
-            P.write('\n')
             
         with(open(lastfilename, 'w')) as L:
             L.write(word)
