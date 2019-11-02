@@ -105,7 +105,7 @@ def GetWord():
     with(open(ansfilename, 'r')) as F:
         dic = list(set(F.read().strip().split('\n')))
 
-    return "今" + len(dic) + "個の言葉を覚えてます"
+    return '今{}個の言葉を覚えてます'.format(len(dic))
 
 
 
