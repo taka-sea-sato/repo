@@ -43,9 +43,6 @@ def GetRes(Msg):
         
     with(open(lastfilename, 'r')) as L:
         Lastword = list(set(L.read().strip().split('\n')))
-        
-    with(open(playtxt, 'r')) as P:
-        play = list(set(P.read().strip().split('\n')))
            
     word = jaconv.kata2hira(Msg)
     startswith = word[-1]
@@ -61,6 +58,9 @@ def GetRes(Msg):
     with(open(playtxt, 'a')) as P:
         P.write(Msg)
         P.write('\n')
+        
+    with(open(playtxt, 'r')) as P:
+        play = list(set(P.read().strip().split('\n')))
     
     msg = 'わたしの番です。'
 
