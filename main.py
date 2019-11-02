@@ -62,7 +62,7 @@ def GetRes(Msg):
 
     words = [ e for e in dic if jaconv.kata2hira(e).startswith(startswith) and e not in used ]
     if len(words) == 0:
-        with(open(playtxt, 'a')) as F:
+        with(open(ansfilename, 'a')) as F:
             for e in play:
                 F.write(e)
                 F.write('\n')
